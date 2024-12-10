@@ -1,0 +1,170 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h1>Dynamic Resume Builder by Muhammad Shahveer</h1>
+    <form id="resume-form">
+        <fieldset>
+            <legend>Personal Information</legend>
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Education</legend>
+            <label for="Education">Education:</label>
+            <textarea  id="education" name="Education"placeholder="Enter your Education"  rows="4" required></textarea>
+
+        </fieldset>
+        <fieldset>
+            <legend>Experience</legend>
+            <label for="experience">Experience :</label>
+            <textarea  id="experience" name="experience" placeholder="Enter your Experience" rows="4" required></textarea>
+
+        </fieldset>
+        <fieldset>
+            <legend>Skill</legend>
+            <label for="Skill">Skills :</label>
+            <textarea  id="skills" name="skills" placeholder="Enter your Skills" rows="4" required></textarea>
+        </fieldset>
+
+        <button type="submit"> <b>Generate Resume</b></button>
+    </form>
+
+    <br>
+    <div class="resume-display">
+
+    </div>
+    
+    
+    <script src="script.js"></script>
+</body>
+</html> -->
+ 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Resume Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            max-width: 600px;
+            margin-top: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .resume-container {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Dynamic Resume Generator</h1>
+
+    <!-- Form for User Input -->
+    <label for="name">Name:</label>
+    <input type="text" id="name" placeholder="Your Name">
+
+    <label for="position">Position:</label>
+    <input type="text" id="position" placeholder="Your Position">
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" placeholder="Your Email">
+
+    <label for="phone">Phone:</label>
+    <input type="tel" id="phone" placeholder="Your Phone Number">
+
+    <label for="skills">Skills (comma separated):</label>
+    <input type="text" id="skills" placeholder="E.g., JavaScript, HTML, CSS">
+
+    <button class="button" onclick="generateResume()">Generate Resume</button>
+
+    <!-- Output Container for Generated Resume -->
+    <div class="resume-container" id="resumeOutput" style="display: none;"></div>
+</div>
+
+<script>
+    function generateResume() {
+        // Get input values from the form
+        const name = document.getElementById('name').value;
+        const position = document.getElementById('position').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const skills = document.getElementById('skills').value.split(',');
+
+        // Display the output in the resume container
+        const outputDiv = document.getElementById('resumeOutput');
+        outputDiv.style.display = 'block';
+        outputDiv.innerHTML = `
+            <h2>${name}</h2>
+            <p><strong>Position:</strong> ${position}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Phone:</strong> ${phone}</p>
+            <p><strong>Skills:</strong> ${skills.map(skill => skill.trim()).join(", ")}</p>
+        `;
+    }
+</script>
+
+</body>
+</html>
